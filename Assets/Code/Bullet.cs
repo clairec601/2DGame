@@ -2,16 +2,14 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [Header("Bullet Lifetime")]
-    public float lifeTime = 2f;
+    private float Speed = 4.5f;
 
-    void Start()
-    {
-        Destroy(gameObject, lifeTime);
+    private void Update() {
+        transform.position += transform.right * Time.deltaTime * Speed;
+
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
+    private void OnCollisionEnter2D(Collision2D collision) {
         Destroy(gameObject);
     }
 }
