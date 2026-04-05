@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private float Speed = 4.5f;
+    public float Speed = 4.5f;
 
     private void Update() {
         transform.position += transform.right * Time.deltaTime * Speed;

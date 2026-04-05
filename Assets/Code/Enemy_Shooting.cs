@@ -5,7 +5,7 @@ public class EnemyShooting : MonoBehaviour
     public GameObject Bullet;
     public Transform firePoint;
     private float time = 0f;
-    public float interpolationPeriod = 0.1f;
+    public float interpolationPeriod = 1f;
 
     void Update()
     {
