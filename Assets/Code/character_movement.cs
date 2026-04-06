@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jump")]
     public float jumpForce = 5f;
     public int maxJumps = 2;
+    public float airSpeed = 2f;
 
     private Rigidbody2D rb;
     private float moveInput_x;
@@ -21,8 +23,20 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Horizontal movement
-        moveInput_x = Input.GetAxis("Horizontal");
+        moveInput_x = Input.GetAxisRaw("Horizontal");
+      
         rb.linearVelocity = new Vector2(moveInput_x * speed, rb.linearVelocity.y);
+
+        // apply extra gravity to jump faster
+        if (rb.linearVelocity.y < 0)
+        {
+            //falling
+            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * airSpeed * 1.25f * Time.deltaTime;
+
+        }else if (rb.linearVelocity.y > 0){
+            // rising
+            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * airSpeed * Time.deltaTime;
+        }
 
         // Jump (limited)
         if (Input.GetKeyDown(KeyCode.W) && jumpCount < maxJumps)
@@ -35,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
             jumpCount++;
         }
+
     }
 
     // Reset jump count when touching ground

@@ -394,7 +394,11 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+<<<<<<< HEAD
 --- !u!1 &1695109836
+=======
+--- !u!1 &1771958561
+>>>>>>> SamBranch
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -402,6 +406,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 1695109839}
   - component: {fileID: 1695109838}
   - component: {fileID: 1695109837}
@@ -409,11 +414,17 @@ GameObject:
   - component: {fileID: 1695109841}
   m_Layer: 0
   m_Name: Enemy
+=======
+  - component: {fileID: 1771958562}
+  m_Layer: 6
+  m_Name: LaunchPoint
+>>>>>>> SamBranch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!50 &1695109837
 Rigidbody2D:
   serializedVersion: 5
@@ -501,11 +512,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!4 &1695109839
+=======
+--- !u!4 &1771958562
+>>>>>>> SamBranch
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1695109836}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -607,6 +622,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+  m_GameObject: {fileID: 1771958561}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: -1.003, y: 0.01, z: 0}
+  m_LocalScale: {x: 0.3824, y: 0.2597, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1854658852}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+>>>>>>> SamBranch
 --- !u!1 &1854658848
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,13 +642,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1854658852}
+  - component: {fileID: 1854658854}
+  - component: {fileID: 1854658853}
   - component: {fileID: 1854658851}
   - component: {fileID: 1854658850}
   - component: {fileID: 1854658849}
-  - component: {fileID: 1854658853}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -768,10 +795,15 @@ Transform:
   m_GameObject: {fileID: 1854658848}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 6.95, y: -3.62, z: 0}
+=======
+  m_LocalPosition: {x: 0.03, y: -0.10801, z: 0}
+>>>>>>> SamBranch
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1771958562}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1854658853
@@ -786,9 +818,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e79b69e17028da542b876366eb93701b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  speed: 5
-  jumpForce: 5
+  speed: 8
+  jumpForce: 15
   maxJumps: 2
+  airSpeed: 4
+--- !u!114 &1854658854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854658848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 977a07ec34b5f764d9bcddfaec63935d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::character_shooting
+  projectilePrefab: {fileID: 1487445447632328458, guid: fd042636b86d43e4a9d689cda6cd77a5, type: 3}
+  launchOffset: {fileID: 1771958562}
+  cooldown: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
