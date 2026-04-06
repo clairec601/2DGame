@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyShooting : MonoBehaviour
 {
     public GameObject Bullet;
+    public Transform Player;
     public Transform firePoint;
     private float time = 0f;
     public float interpolationPeriod = 1f;

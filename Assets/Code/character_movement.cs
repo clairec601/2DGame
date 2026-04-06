@@ -52,12 +52,17 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    // Reset jump count when touching ground
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        // Reset jump count when touching ground
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Platform"))
         {
             jumpCount = 0;
+        }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -18,13 +19,11 @@ public class Projectile : MonoBehaviour
     //collision method
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if (!collision.gameObject.CompareTag("Player"))
-        {
-
-            projectileKill();
-
+        if (collision.gameObject.CompareTag("Enemy")){
+            Destroy(collision.gameObject);
+            UnityEngine.Debug.Log("collided");
         }
+        projectileKill();
         
     }
 
