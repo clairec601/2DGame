@@ -21,9 +21,10 @@ public class progress_level : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
+            
             audioSource.PlayOneShot(SFX);
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
         }
     }
