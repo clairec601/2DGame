@@ -19,10 +19,17 @@ public class character_shooting : MonoBehaviour
 
     private float direction = -1f;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip SFX;
+
+    private AudioSource audioSource;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -51,6 +58,8 @@ public class character_shooting : MonoBehaviour
         {
 
             Instantiate(projectilePrefab, launchOffset.position, launchOffset.rotation);
+
+            audioSource.PlayOneShot(SFX);
 
             StartCoroutine(ShootCooldown());
 
