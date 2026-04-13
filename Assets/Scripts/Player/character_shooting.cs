@@ -24,11 +24,15 @@ public class character_shooting : MonoBehaviour
 
     private AudioSource audioSource;
 
+    private character_collisions collisions;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
         audioSource = GetComponent<AudioSource>();
+
+        collisions = GetComponent<character_collisions>();
 
     }
 
@@ -36,34 +40,40 @@ public class character_shooting : MonoBehaviour
     void Update()
     {
 
-        // Horizontal movement
-        moveInput_x = Input.GetAxisRaw("Horizontal");
-
-        // Flip direction
-        if (moveInput_x != 0)
+        if (!collisions.IsDead())
         {
+            // Horizontal movement
+            moveInput_x = Input.GetAxisRaw("Horizontal");
 
-            direction = moveInput_x;
+            // Flip direction
+            if (moveInput_x != 0)
+            {
 
-            //rotate the direction of spawning bullets
-            launchOffset.localPosition = new Vector3(moveInput_x, launchOffset.localPosition.y, 0);
+                direction = moveInput_x;
 
-            //rotate the launch direction depending on the movement input
-            launchOffset.rotation = new Quaternion(0, 0, moveInput_x > 0 ? 0 : 180, 0);
+                //rotate the direction of spawning bullets
+                launchOffset.localPosition = new Vector3(moveInput_x, launchOffset.localPosition.y, 0);
+
+                //rotate the launch direction depending on the movement input
+                launchOffset.rotation = new Quaternion(0, 0, moveInput_x > 0 ? 0 : 180, 0);
+
+            }
+
+            // Shoot
+            if (can_shoot && Input.GetKeyDown(KeyCode.U))
+            {
+
+                Instantiate(projectilePrefab, launchOffset.position, launchOffset.rotation);
+
+                audioSource.PlayOneShot(SFX);
+
+                StartCoroutine(ShootCooldown());
+
+            }
+
 
         }
-
-        // Shoot
-        if (can_shoot && Input.GetKeyDown(KeyCode.U))
-        {
-
-            Instantiate(projectilePrefab, launchOffset.position, launchOffset.rotation);
-
-            audioSource.PlayOneShot(SFX);
-
-            StartCoroutine(ShootCooldown());
-
-        }
+        
 
     }
 

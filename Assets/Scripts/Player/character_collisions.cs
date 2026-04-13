@@ -30,7 +30,7 @@ public class character_collisions : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Kill") && !isDead)
+        if ((collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Kill")) && !isDead)
             StartCoroutine(Respawn());
     }
 
@@ -62,5 +62,10 @@ public class character_collisions : MonoBehaviour
         isDead = false;
 
         audioSource.PlayOneShot(resSFX);
+    }
+
+    public bool IsDead()
+    {
+        return isDead;
     }
 }
