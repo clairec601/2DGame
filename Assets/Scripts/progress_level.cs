@@ -1,5 +1,6 @@
-using UnityEngine;
+ using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class progress_level : MonoBehaviour
 {
@@ -21,11 +22,18 @@ public class progress_level : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            
-            audioSource.PlayOneShot(SFX);
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            StartCoroutine(ProgressAfterAudio());
 
         }
+    }
+
+    // wait until audio finishes
+    IEnumerator ProgressAfterAudio()
+    {
+        audioSource.PlayOneShot(SFX);
+        yield return new WaitWhile(() => audioSource.isPlaying);
+        // do your thing here
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
